@@ -1,0 +1,20 @@
+CREATE TABLE tbl_topics
+(
+	topic_id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	subject VARCHAR(255) NOT NULL,
+	date DATETIME NOT NULL,
+	username VARCHAR(128)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+CREATE TABLE tbl_replies
+(
+	reply_id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	content TEXT,
+	date DATETIME NOT NULL,
+	reply_topic INTEGER NOT NULL,
+	username VARCHAR(128)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+ALTER TABLE tbl_replies ADD FOREIGN KEY(reply_topic) REFERENCES tbl_topics(topic_id) ON DELETE CASCADE ON UPDATE CASCADE;  
