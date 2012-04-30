@@ -1,0 +1,209 @@
+/*************************
+**************************
+sForum - CSS layout
+
+author: Jordi (IchitakaSeto)
+version of css: 0.1
+*/
+
+/*Remove browser defaults*/
+body, div, h1, form, fieldset, input, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+}
+
+/*100% height on body fixes issue with CSS gradients on the page body*/
+html {
+	height: 100%;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-size: 1,5em;
+	color: #6060FF;
+}
+
+h2 {
+	font-size: 1.3em;
+	color: #808080;
+}
+
+h3 {
+	font-size: 1em;
+	color: #808080;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 1em;
+	color: #505050;
+}
+
+h5 {
+	font-size: 0.6em;
+	font-weight: bold;
+	color: #808080;
+}
+
+a {
+	font-size: 1em;
+	color: #505050; 
+	text-decoration: none;
+}
+a:visited {
+	color: #505050; 
+	text-decoration: none;
+}
+
+a:hover {
+	color: #6060FF;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #FFA000;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.tIndex, .tViewTopic {
+	width: 95%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.tIndex, td, th {	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #C0C0C0;
+	padding: 0px 0px 0px 5px;
+}
+
+.tViewTopic, td, th {	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #C0C0C0;
+	padding: 0px 0px 0px 5px;
+}
+
+/*Attributes of the tables*/
+.tIndex .tIndexCategories th, .tViewTopic .tViewTopicCategories th {
+	background-color: #F8F8F8;
+}
+
+
+.tIndex .tIndexCategories .tIndexTopic {
+	width: 50%;
+}
+.tViewTopic .tViewTopicCategories .tViewAuthor {
+	width: 20%;
+}
+
+
+.tIndex .tIndexCategories .tIndexAuthor {
+	width: 15%;
+}	
+
+.tIndex .tIndexCategories .tIndexTime {
+	width: 15%;
+}	
+
+
+/*This cells corresponds to the content of the table*/
+.tIndex .tIndexValues .tIndexTopicName {
+	text-align: left;
+}
+	
+.tIndex .tIndexValues .tIndexUsername {
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.tIndex .tIndexValues .tIndexDate {
+	text-align: center;
+	font-size: 0.8em;
+}	
+	
+	
+/*Forms*/	
+label {
+	float: left;
+	clear: left;
+	margin: 7px 20px 0 0;
+	width: 95px;
+	text-align: right;
+	color: #445668;
+}
+
+input {
+	width: 400px;
+	height: 25px;
+	border: 1px solid #C0C0C0;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	padding: 5px 20px 0px 20px; 
+	margin: 0 0 20px 0;
+}
+
+#username {
+	width: 200px;
+}
+	
+textarea {
+	width: 400px;
+	height: 170px;
+	padding: 12px 20px 0px 20px;
+	margin: 0 0 20px 0;	
+	border: 1px solid #C0C0C0;	
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+}	
+	
+input[type=submit] {
+	border: 1px solid #556f8c;
+	width: 200px;
+	height: 35px;
+	float: right;
+	padding: 10px 15px;
+	margin: 0 15px 0px 0;
+
+}		
+	
+/*Create topic and addReply divisor*/
+#createTopic, #addReply {
+	width: 600px;
+	border: none;
+	margin: 10px auto 5px auto;
+}
+
+#subject {
+	padding: 12px 20px 0 30px;
+	text-transform: uppercase;
+}
+
+#backDivisor {
+	padding: 12px 20px 12px 30px;
+}
+
+header, footer {
+	width: 95%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+	padding: 12px 0 12px 0;
+}
+
+#posts {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+

@@ -3,7 +3,7 @@
 **********   sFORUM   *******************
 
 sForum - Very (very) Simple Message Board
-Version: 0.1
+Version: 0.2
 
 Author: 
 	Jordi (IchitakaSeto)

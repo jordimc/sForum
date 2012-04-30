@@ -6,6 +6,7 @@
 	<meta name="author" content="Jordi" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 	<header>
@@ -25,24 +26,24 @@
 	else 
 	{
 		//Prepare the results table
-		echo 	'<table width="90%" border="1" align="center">
-				<tr>
-					<th>Topic</th>
-					<th>Author</th>
-					<th>Time</th>
+		echo 	'<table class="tIndex">
+				<tr class="tIndexCategories">
+					<th class="tIndexTopic"><h3> Topic </h3></th>
+					<th class="tIndexAuthor"><h3> Author</h3></th>
+					<th class="tIndexTime"><h3> Date </h3></th>
 				</tr>';
 	
 		while ($row = mysql_fetch_assoc($result))
 		{
-			echo '<tr>';
-				echo '<td>';
-					echo '<h3><a href="viewtopic.php?id=' . $row['topic_id'] . '">' . $row['subject'] . '</a></h3>';
+			echo '<tr class="tIndexValues">';
+				echo '<td class="tIndexTopicName">';
+					echo '<h4><a href="viewtopic.php?id=' . $row['topic_id'] . '">' . $row['subject'] . '</a></h4>';
 				echo '</td>';
-				echo '<td>';
-					echo $row['username'];
+				echo '<td class="tIndexUsername">';
+					echo '<h4>' . $row['username'] . '</h4>';
 				echo '</td>';
-				echo '<td>';
-					echo date('d-m-Y h:i:s', strtotime($row['date'])); 
+				echo '<td class="tIndexDate">';
+					echo '<h4>' . date('d-m-Y h:i:s', strtotime($row['date'])) . '</h4>'; 
 				echo '</td>';
 			echo '</tr>';	
 		}
@@ -50,10 +51,11 @@
 	}
 	mysql_free_result($result);
 ?>
+	<div id="createTopic">
+		<?php include 'create_topic.php'; ?>
 	</div>
-	<?php include 'create_topic.php'; ?>
 	<footer>
-		- sForum -
+		- sForum - By Jordi (IchitakaSeto)
 	</footer>
 </body>
 </html>

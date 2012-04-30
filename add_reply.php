@@ -1,7 +1,7 @@
 <?php
 
 //Connexio a la BDD
-include 'connection.php';
+include 'config/connection.php';
 
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') 
@@ -49,8 +49,7 @@ else
 		}
 		else
 		{
-			echo 'Reply posting succedeed.';
-			echo '<h3><a href="viewtopic.php?id=' . $topicid . '"> View Topic </a></h3>';
+			header ("Location: viewtopic.php?id=$topicid");
 		}
 	}
 	else echo 'Topic ID incorrect.'; 

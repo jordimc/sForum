@@ -1,7 +1,7 @@
 <?php
 
 //Connexió a la BDD
-include 'connection.php';
+include 'config/connection.php';
 
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') 
@@ -17,9 +17,9 @@ else
 
 	//Prevenció d'atacs XSS, fem servir strip_tags() per 
 	// eliminar els tags HTML o PHP que l'usuari pugui introduir
-	$subject = strip_tags($subject);
-	$message = strip_tags($message);
-	$username = strip_tags($username);
+	$subject = htmlspecialchars(strip_tags($subject));
+	$message = htmlspecialchars(strip_tags($message));
+	$username = htmlspecialchars(strip_tags($username));
 
 	//La data d'enviament...
 	$datetime = date("d/m/y h:i:s");
@@ -65,8 +65,7 @@ else
 		}
 		else
 		{
-			echo 'You have successfully added a new topic';
-			echo '<h3><a href="viewtopic.php?id=' . $topicid . '"> View Topic </a></h3>';
+			header ("Location: viewtopic.php?id=$topicid");
 		}
 	}
 }

@@ -6,10 +6,11 @@
 	<meta name="author" content="Jordi" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 	<header>
-		<h1> sForum - Index</h1>
+		<h1> sForum - View Topic</h1>
 	</header>
 	<div id=viewMessage>
 <?php
@@ -32,7 +33,7 @@
 		//Prepare the results table
 
 		echo '<div id="subject">';
-			echo '<h3>Subject: ' . $subject[0] . '</h3>';
+			echo '<h2>' . $subject[0] . '</h2>';
 		echo '</div>';
 		//Now let's retrieve all the replies
 		$sql = "SELECT
@@ -54,17 +55,22 @@
 		}
 		else
 		{
-			echo 	'<table width="90%" border="1" align="center">';
+			echo 	'<table class="tViewTopic">
+					<tr class="tViewTopicCategories">
+						<th class="tViewAuthor"><h3> Author / Date </h3></th>
+						<th class="tViewMessage"><h3> Message </h3></th>
+					</tr>';
 			
 			while ($row = mysql_fetch_assoc($result))
 			{
 				echo '<tr>';
 					echo '<td>';
-						echo '<p>' . $row['username'] . ' </p>';
-						echo date('d-m-Y h:i:s', strtotime($row['date']));
+						echo '<h4><p>' . $row['username'] . '</p></h4>';
+						echo '<p><h5>' . date('d-m-Y', strtotime($row['date'])) . '</h5>';
+						echo '<h5>' . date('h:i:s', strtotime($row['date'])) . '</h5></p>';
 					echo '</td>';
 					echo '<td>';
-						echo $row['content']; 
+						echo '<p>' . nl2br($row['content']) . '</p>'; 
 					echo '</td>';
 				echo '</tr>';	
 			}
@@ -74,10 +80,17 @@
 	
 ?>
 	</div>
-	<?php include 'create_reply.php'; ?>
-	<a href="index.php">Go back to the forum index</a>
+
+	<div id="backDivisor">
+		<a href="index.php"> :: Go back to the forum Index</a>
+	</div>
+	
+	<div id="addReply">
+		<?php include 'create_reply.php'; ?>
+	</div>
+
 	<footer>
-		- sForum -
+		- sForum - By Jordi (IchitakaSeto)
 	</footer>
 </body>
 </html>

@@ -1,0 +1,20 @@
+*****************************************
+*****************************************
+**********   sFORUM   *******************
+			
+sForum - Very (very) Simple Message Board
+
+
+Version LOG
+*****************************************
+
+Version 0.2
+------------------------------------------
+- Added some style to the forum with CSS
+- Content of messages is showed with format
+- Some UX improves
+
+Version 0.1
+------------------------------------------
+- Very basic functionalities (posting and
+  reply) working
