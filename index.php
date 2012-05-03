@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Basic PHP+MySQL forum - sForum</title>
+	<title> sForum - Basic PHP+MySQL Board Messages </title>
 	<meta name="description" content="Very basic PHP forum" />
 	<meta name="author" content="Jordi" />
 	<meta charset="utf-8" />
@@ -12,16 +12,73 @@
 	<header>
 		<h1> sForum - Index</h1>
 	</header>
-	<div id="posts">
-<?php
+	<?php
 	include 'config/connection.php';
 	
-	$sql = "SELECT * FROM tbl_topics ORDER BY topic_id DESC";
-	$result = mysql_query($sql);
-
-	if(mysql_num_rows($result) == 0) 
+	//Number of records to show. Pre: [1..*]
+	$display = 5;			
+	
+	
+	/* If the 'p' (number of pages of the forum) value is set, we take it
+	   Otherwise, we calculate it. */
+	if(isset($_GET['p']) && is_numeric($_GET['p'])) 
 	{
-		echo 'There are no topics in this forum';
+		$pages = $_GET['p'];
+	}
+	else
+	{
+		$sql = "SELECT COUNT(topic_id) FROM tbl_topics";
+		$result = mysqli_query($connexio, $sql);
+		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+		$records = $row[0];
+	
+		/* Number of pages needed */
+		if($records > $display) 
+		{
+			//More than 1 page...
+			$pages = ceil($records/$display);
+		}
+		else
+		{
+			$pages = 1;
+		}
+	}
+	
+	/* Starting point of the query */
+	if(isset($_GET['start']) && is_numeric($_GET['start']))
+	{
+		$start = $_GET['start'];
+	}
+	else
+	{
+		$start = 0;
+	}
+	
+	if($pages > 1) 
+	{
+		$current_page = ceil($start/$display)+1;
+	}
+	else
+	{
+		$current_page = 1;
+	}
+	
+	/* Make the query between the range given */
+	$sql = "SELECT * FROM tbl_topics ORDER BY topic_id DESC LIMIT $start, $display";
+	$result = mysqli_query($connexio, $sql);
+		
+	?>
+
+	<div class="pagination">
+		<?php include 'includes/pagination.php'; ?>
+	</div>
+	<div id="posts">
+
+	<?php
+
+	if(mysqli_num_rows($result) == 0) 
+	{
+		echo '<h3>There are no topics in this forum</h3>';
 	}
 	else 
 	{
@@ -33,7 +90,7 @@
 					<th class="tIndexTime"><h3> Date </h3></th>
 				</tr>';
 	
-		while ($row = mysql_fetch_assoc($result))
+		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 		{
 			echo '<tr class="tIndexValues">';
 				echo '<td class="tIndexTopicName">';
@@ -49,8 +106,13 @@
 		}
 		echo '</table>';
 	}
-	mysql_free_result($result);
-?>
+	mysqli_free_result($result);
+	mysqli_close($connexio);
+	?>
+	</div>
+	<div class="pagination">
+		<?php include 'includes/pagination.php'; ?>
+	</div>
 	<div id="createTopic">
 		<?php include 'create_topic.php'; ?>
 	</div>

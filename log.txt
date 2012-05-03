@@ -8,6 +8,16 @@ sForum - Very (very) Simple Message Board
 Version LOG
 *****************************************
 
+
+Version 0.3
+------------------------------------------
+- Added pagination to the index forum
+- Added pagination in view topic
+- [Fixed]: The field "subject" in the new
+  topic form was always showing text in uppercase.
+- Security enhancements when trying to modificate
+  the URL parameters
+
 Version 0.2
 ------------------------------------------
 - Added some style to the forum with CSS

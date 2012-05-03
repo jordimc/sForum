@@ -41,8 +41,11 @@ else
 					'$topicid',
 					'$username')";
 				
-		$result = mysql_query($sql);
-	
+		$result = mysqli_query($connexio, $sql);
+		
+		mysqli_free_result($result);
+		mysqli_close($connexio);
+		
 		if(!$result)
 		{
 			echo 'There was some error while inserting the new reply';

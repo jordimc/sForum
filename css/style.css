@@ -185,12 +185,18 @@ input[type=submit] {
 	margin: 10px auto 5px auto;
 }
 
-#subject {
+#subjectDivisor {
 	padding: 12px 20px 0 30px;
 	text-transform: uppercase;
 }
 
 #backDivisor {
+	padding: 12px 20px 12px 30px;
+}
+
+.pagination {
+	width: 95%;
+	text-align: right;
 	padding: 12px 20px 12px 30px;
 }
 

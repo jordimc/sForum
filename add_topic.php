@@ -57,7 +57,10 @@ else
 					'$topicid',
 					'$username')";
 		
-		$result = mysql_query($sql);
+		$result = mysqli_query($connexio, $sql);
+		
+		mysqli_free_result($result);
+		mysqli_close($connexio);
 		
 		if(!$result)
 		{
